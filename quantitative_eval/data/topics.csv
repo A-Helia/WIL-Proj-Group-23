@@ -1,0 +1,107 @@
+topic_id,topic,question_id,question
+W01,what's the difference between CS and SE programs?,W01Q01,What sets apart CS programs from SE programs?
+W01,what's the difference between CS and SE programs?,W01Q02,How do CS and SE programs differ from each other?
+W01,what's the difference between CS and SE programs?,W01Q03,Can you explain the variances between CS and SE programs?
+W01,what's the difference between CS and SE programs?,W01Q04,what's the difference between CS and SE programs?
+W02,What choice of electives available?,W02Q01,Can you describe the range of electives that are on offer?
+W02,What choice of electives available?,W02Q02,What options do I have for selecting elective courses?
+W02,What choice of electives available?,W02Q03,Can you provide details on the available choices of electives?
+W02,What choice of electives available?,W02Q04,What choice of electives available?
+W03,Can I do a double degree with Business?,W03Q01,Is it possible to undertake a double degree with Business?
+W03,Can I do a double degree with Business?,W03Q02,Can I enroll in a double degree program that includes Business?
+W03,Can I do a double degree with Business?,W03Q03,Are there any opportunities for a double degree program involving Business?
+W03,Can I do a double degree with Business?,W03Q04,Can I do a double degree with Business?
+W04,What there double degrees available in CS?,W04Q01,Are there opportunities to pursue double degrees in CS?
+W04,What there double degrees available in CS?,W04Q02,Can students opt for double degrees in the CS field?
+W04,What there double degrees available in CS?,W04Q03,Are there any options for combining CS with another discipline for a double degree?
+W04,What there double degrees available in CS?,W04Q04,What there double degrees available in CS?
+W05,Is RMIT’s Software Engineering degree accredited by Engineers Australia?,W05Q01,Does Engineers Australia accredit RMIT's Software Engineering degree?
+W05,Is RMIT’s Software Engineering degree accredited by Engineers Australia?,W05Q02,Can RMIT's Software Engineering degree be considered accredited by Engineers Australia?
+W05,Is RMIT’s Software Engineering degree accredited by Engineers Australia?,W05Q03,Is the Software Engineering degree at RMIT recognized and accredited by Engineers Australia?
+W05,Is RMIT’s Software Engineering degree accredited by Engineers Australia?,W05Q04,Is RMIT’s Software Engineering degree accredited by Engineers Australia?
+W06,Are these programs accredited by Australian Computer Society?,W06Q01,Are these programs recognized by the Australian Computer Society?
+W06,Are these programs accredited by Australian Computer Society?,W06Q02,Can I expect these programs to be accredited by the Australian Computer Society?
+W06,Are these programs accredited by Australian Computer Society?,W06Q03,Are the programs endorsed by the Australian Computer Society?
+W06,Are these programs accredited by Australian Computer Society?,W06Q04,Are these programs accredited by Australian Computer Society?
+W07,Will the school provide work placements?,W07Q01,Does the school offer work placements?
+W07,Will the school provide work placements?,W07Q02,Will there be opportunities for work placements provided by the school?
+W07,Will the school provide work placements?,W07Q03,Can I expect the school to facilitate work placements?
+W07,Will the school provide work placements?,W07Q04,Will the school provide work placements?
+W08,Are the internships paid?,W08Q01,Are the internships paid positions?
+W08,Are the internships paid?,W08Q02,Can I expect to receive payment for the internships?
+W08,Are the internships paid?,W08Q03,Are the internships remunerated?
+W08,Are the internships paid?,W08Q04,Are the internships paid?
+W09,"Are RMIT degrees Bachelor of Science (BSc) degrees or Bachelor of Engineering (BEng) degrees, or what?",W09Q01,"Are RMIT degrees categorized as Bachelor of Science (BSc) degrees or Bachelor of Engineering (BEng) degrees, or some other designation?"
+W09,"Are RMIT degrees Bachelor of Science (BSc) degrees or Bachelor of Engineering (BEng) degrees, or what?",W09Q02,"Can you clarify whether RMIT degrees are classified as Bachelor of Science (BSc) degrees or Bachelor of Engineering (BEng) degrees, or another category?"
+W09,"Are RMIT degrees Bachelor of Science (BSc) degrees or Bachelor of Engineering (BEng) degrees, or what?",W09Q03,"How are RMIT degrees labeled? Are they referred to as Bachelor of Science (BSc) degrees or Bachelor of Engineering (BEng) degrees, or something else?"
+W09,"Are RMIT degrees Bachelor of Science (BSc) degrees or Bachelor of Engineering (BEng) degrees, or what?",W09Q04,"Are RMIT degrees Bachelor of Science (BSc) degrees or Bachelor of Engineering (BEng) degrees, or what?"
+W10,I didn’t do Math Methods in Year 12. Can I get into CS program somehow?,W10Q01,Is it possible to gain admission to the CS program even if I didn't study Math Methods in Year 12?
+W10,I didn’t do Math Methods in Year 12. Can I get into CS program somehow?,W10Q02,Can I pursue the CS program without having studied Math Methods in Year 12?
+W10,I didn’t do Math Methods in Year 12. Can I get into CS program somehow?,W10Q03,Are there any alternative pathways to enter the CS program if I haven't taken Math Methods in Year 12
+W10,I didn’t do Math Methods in Year 12. Can I get into CS program somehow?,W10Q04,I didn’t do Math Methods in Year 12. Can I get into CS program somehow?
+W11,"If I were to be transferred from IT to CS, will I get full credit for my first year in IT?",W11Q01,Will I receive full credit for my first year in the IT program if I transfer to the CS program?
+W11,"If I were to be transferred from IT to CS, will I get full credit for my first year in IT?",W11Q02,Can I expect my first year in the IT program to be recognized and credited when I switch to the CS program?
+W11,"If I were to be transferred from IT to CS, will I get full credit for my first year in IT?",W11Q03,Will my progress from the first year in the IT program be acknowledged when I transition to the CS program?
+W11,"If I were to be transferred from IT to CS, will I get full credit for my first year in IT?",W11Q04,"If I were to be transferred from IT to CS, will I get full credit for my first year in IT?"
+W12,Can I transfer between programs easily?,W12Q01,Are program transfers relatively straightforward?
+W12,Can I transfer between programs easily?,W12Q02,Is it a smooth process to switch between programs?
+W12,Can I transfer between programs easily?,W12Q03,Can I easily change my program of study if desired?
+W12,Can I transfer between programs easily?,W12Q04,Can I transfer between programs easily?
+W13,"What level of Work Integrated Learning (call it capstone project, placement, industry training, or whatever they call it) available to RMIT CS students?",W13Q01,What options are there for Work Integrated Learning experiences for RMIT CS students?
+W13,"What level of Work Integrated Learning (call it capstone project, placement, industry training, or whatever they call it) available to RMIT CS students?",W13Q02,"Can you provide details about the available capstone projects, placements, and industry training for RMIT CS students?"
+W13,"What level of Work Integrated Learning (call it capstone project, placement, industry training, or whatever they call it) available to RMIT CS students?",W13Q03,"What forms of Work Integrated Learning, such as capstone projects or industry placements, are accessible for RMIT CS students?"
+W13,"What level of Work Integrated Learning (call it capstone project, placement, industry training, or whatever they call it) available to RMIT CS students?",W13Q04,"What level of Work Integrated Learning (call it capstone project, placement, industry training, or whatever they call it) available to RMIT CS students?"
+W14,Is the transfer from associate degree to bachelors automatic?,W14Q01,Can I expect an automatic transfer of credits from an associate degree to a bachelor's degree?
+W14,Is the transfer from associate degree to bachelors automatic?,W14Q02,Will my credits from an associate degree be automatically recognized when I pursue a bachelor's degree?
+W14,Is the transfer from associate degree to bachelors automatic?,W14Q03,Is the transition from an associate degree to a bachelor's degree seamless?
+W14,Is the transfer from associate degree to bachelors automatic?,W14Q04,Is the transfer from associate degree to bachelors automatic?
+W15,"I heard that there is no future in IT industry in Australia, as every IT company has outsourced to India?",W15Q01,Is it accurate to say that the IT industry in Australia has no future as every company outsources to India?
+W15,"I heard that there is no future in IT industry in Australia, as every IT company has outsourced to India?",W15Q02,Are the assertions true that there is no future for the IT industry in Australia because most companies have outsourced to India?
+W15,"I heard that there is no future in IT industry in Australia, as every IT company has outsourced to India?",W15Q03,"I have heard rumors that the IT industry in Australia is being outsourced to India, resulting in a lack of future prospects. Is this information correct?"
+W15,"I heard that there is no future in IT industry in Australia, as every IT company has outsourced to India?",W15Q04,"I heard that there is no future in IT industry in Australia, as every IT company has outsourced to India?"
+W16,"If I do not get the required ATAR to get into IT degree, is the Associate degree a suitable pathway?",W16Q01,Can the Associate degree be considered a suitable pathway if I don't meet the required ATAR for the IT degree?
+W16,"If I do not get the required ATAR to get into IT degree, is the Associate degree a suitable pathway?",W16Q02,Is the Associate degree a viable alternative if I fall short of the required ATAR for the IT degree?
+W16,"If I do not get the required ATAR to get into IT degree, is the Associate degree a suitable pathway?",W16Q03,Is the Associate degree a recommended option if I don't meet the ATAR requirements for the IT degree?
+W16,"If I do not get the required ATAR to get into IT degree, is the Associate degree a suitable pathway?",W16Q04,"If I do not get the required ATAR to get into IT degree, is the Associate degree a suitable pathway?"
+W17,"What kind of jobs, careers available to CS graduates? SE, IT, DS, or whatever degree?",W17Q01,"What employment opportunities and career paths are open to graduates with degrees in CS, SE, IT, DS, or related fields?"
+W17,"What kind of jobs, careers available to CS graduates? SE, IT, DS, or whatever degree?",W17Q02,"Can you elaborate on the job prospects and career options for individuals holding degrees in CS, SE, IT, DS, or similar disciplines?"
+W17,"What kind of jobs, careers available to CS graduates? SE, IT, DS, or whatever degree?",W17Q03,"What types of employment and career possibilities await graduates with degrees in CS, SE, IT, DS, or other relevant fields?"
+W17,"What kind of jobs, careers available to CS graduates? SE, IT, DS, or whatever degree?",W17Q04,"What kind of jobs, careers available to CS graduates? SE, IT, DS, or whatever degree?"
+W18,Can you get a job in games industry here?,W18Q01,Can one find employment opportunities in the game development industry in this region?
+W18,Can you get a job in games industry here?,W18Q02,Is it feasible to obtain a job within the game development industry here?
+W18,Can you get a job in games industry here?,W18Q03,Are there potential career opportunities in the game development sector in this area?
+W18,Can you get a job in games industry here?,W18Q04,Can you get a job in games industry here?
+W19,What’s the difference between Bachelor of CS and Bachelor of CS (Professional) degrees?,W19Q01,What are the disparities between the Bachelor of CS and Bachelor of CS (Professional) degrees?
+W19,What’s the difference between Bachelor of CS and Bachelor of CS (Professional) degrees?,W19Q02,"Can you outline the dissimilarities between the two CS degrees, traditional and Professional?"
+W19,What’s the difference between Bachelor of CS and Bachelor of CS (Professional) degrees?,W19Q03,What sets the Bachelor of CS and Bachelor of CS (Professional) degrees apart from each other?
+W19,What’s the difference between Bachelor of CS and Bachelor of CS (Professional) degrees?,W19Q04,What’s the difference between Bachelor of CS and Bachelor of CS (Professional) degrees?
+W20,What’s the difference between CS and IT programs?,W20Q01,How do CS and IT programs differ from each other?
+W20,What’s the difference between CS and IT programs?,W20Q02,Can you explain the variances between CS and IT programs?
+W20,What’s the difference between CS and IT programs?,W20Q03,What sets apart CS programs from IT programs?
+W20,What’s the difference between CS and IT programs?,W20Q04,What’s the difference between CS and IT programs?
+W21,What are the extra courses I need to take if I transfer from IT to CS?,W21Q01,What are the extra courses I need to take if I transfer from IT to CS?
+W22,What can I do if I don't get work placements as SE student?,W22Q01,What can I do if I don't get work placements as SE student?
+W23,Do CS students need to enrol on industry placement?,W23Q01,Do CS students need to enrol on industry placement?
+W24,What are the job demands for different programs?,W24Q01,What are the job demands for different programs?
+W25,What does the final year of CS program include?,W25Q01,What does the final year of CS program include?
+W26,What is the capstone project?,W26Q01,What is the capstone project?
+W27,How many weeks should we work in the industry placements?,W27Q01,How many weeks should we work in the industry placements?
+W28,How long is Bachelor of CS?,W28Q01,How long is Bachelor of CS?
+W29,Is it possible to take elective courses that are not listed within the program?,W29Q01,Is it possible to take elective courses that are not listed within the program?
+W30,What math requirements are needed for the CS program?,W30Q01,What math requirements are needed for the CS program?
+W31,What math requirements are needed for the IT program?,W31Q01,What math requirements are needed for the IT program?
+W32,"what is ""programming boot camp""?",W32Q01,"what is ""programming boot camp""?"
+W33,What are the minimum requirements for an Associate degree student to successfully transfer to a bachelor's degree,W33Q01,What are the minimum requirements for an Associate degree student to successfully transfer to a bachelor's degree
+W34,What are the programming languages that will be covered in the CS program,W34Q01,What are the programming languages that will be covered in the CS program
+W35,when does the application for program transfer open,W35Q01,when does the application for program transfer open
+W36,"If I am an international student, What is the language level required to study CS",W36Q01,"If I am an international student, What is the language level required to study CS"
+W37,Are there any scholarships for CS bachelor's degree,W37Q01,Are there any scholarships for CS bachelor's degree
+W38,Will RMIT help the student to build a professional network in the CS,W38Q01,Will RMIT help the student to build a professional network in the CS
+W39,Is doing an CS degree a better option than an IT degree in terms of job opportunities?,W39Q01,Does pursuing a CS degree offer better job prospects compared to an IT degree?
+W39,Is doing an CS degree a better option than an IT degree in terms of job opportunities?,W39Q02,"In the aspect of job opportunities, is opting for a CS degree superior to selecting an IT degree?"
+W39,Is doing an CS degree a better option than an IT degree in terms of job opportunities?,W39Q03,Are there more favorable job prospects associated with a CS degree as opposed to an IT degree?
+W39,Is doing an CS degree a better option than an IT degree in terms of job opportunities?,W39Q04,Is doing an CS degree a better option than an IT degree in terms of job opportunities?
+W40,What are the majors required for Data Science,W40Q1,What are the majors required for Data Science
+W41,What are the avlible minors cources for CS that doesnot need an approval,W41Q1,What are the avlible minors cources for CS that doesnot need an approval
+W42,what are the majors avalible for IT without a prerequisite,W42Q1,what are the majors avalible for IT without a prerequisite
+W43,what are the majors avalible for CS without a prerequisite,W43Q1,what are the majors avalible for CS without a prerequisite

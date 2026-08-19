@@ -1,0 +1,60 @@
+{
+  "manifest": {
+    "apis": {
+      "custom": {
+        "endpoint": {
+          "uri": "arn:aws:lambda:us-east-1:261818603684:function:218dd2c0-15b2-4d09-bf04-06b4a1fd483d:Release_0"
+        },
+        "interfaces": [],
+        "locales": {},
+        "regions": {
+          "NA": {
+            "endpoint": {
+              "uri": "arn:aws:lambda:us-east-1:261818603684:function:218dd2c0-15b2-4d09-bf04-06b4a1fd483d:Release_0"
+            }
+          },
+          "EU": {
+            "endpoint": {
+              "uri": "arn:aws:lambda:eu-west-1:261818603684:function:218dd2c0-15b2-4d09-bf04-06b4a1fd483d:Release_0"
+            }
+          },
+          "FE": {
+            "endpoint": {
+              "uri": "arn:aws:lambda:us-west-2:261818603684:function:218dd2c0-15b2-4d09-bf04-06b4a1fd483d:Release_0"
+            }
+          }
+        }
+      }
+    },
+    "manifestVersion": "1.0",
+    "publishingInformation": {
+      "automaticClonedLocale": {
+        "locales": [
+          {
+            "source": "en-AU"
+          }
+        ]
+      },
+      "distributionCountries": [],
+      "isAvailableWorldwide": true,
+      "locales": {
+        "en-CA": {
+          "name": "Walert"
+        },
+        "en-US": {
+          "name": "Walert"
+        },
+        "en-IN": {
+          "name": "Walert"
+        },
+        "en-AU": {
+          "name": "Walert"
+        },
+        "en-GB": {
+          "name": "Walert"
+        }
+      },
+      "testingInstructions": "Sample Testing Instructions."
+    }
+  }
+}

@@ -1,0 +1,38 @@
+### Instructions to Import Intent-Based WALERT into Alexa Skill
+
+Sign into Amazon Developer Console
+Go to Alexa Skills Kit
+
+Step 1: Create new skill
+Step 2: Enter skill name
+Step 3: Pick primary locale
+Step 4: For type of experience choose 'other'
+Step 5: For model choose 'Custom'
+Step 6: Select sync locales
+Step 7: For hosting services pick 'Alexa-hosted (Python)'
+Step 8: For hosting region choose [Any of your choice]
+Step 9: Click next
+Step 10: For templates choose 'Start from Scratch'
+Step 11: Click next
+Step 12: Go through the review page. 
+Warning: Make sure you have chosen the right model and hosting region. They can’t be changed after you have created the skill.
+Step 13: Click create skill. (may take upto 2 mins to create)
+Step 14: Click 'Invocations' tab on the left
+Step 15: Click 'Skill Invocation Name'
+Step 16: Enter Invocation Name: 'testing bot'
+Step 17: Click 'Save' on top of the page.
+Step 18: Click 'Build Skill' on the right top.
+Step 19: Click the 'Code' tab.
+Step 20: Select 'Import Code'
+Step 21: Browse and select lambda file.
+Step 22: Select the files on the popup window
+Step 23: Click 'Upload'
+Step 24: Select 'Deploy' on the top right.
+Step 25: Click the 'Build' tab on the top.
+Step 26: Go to Interaction Model
+Step 27: Then click JSON Editor
+Step 28: In current directory of this README file go to Interaction Models -> Custom
+Step 29: Select the file en-AU
+Step 30: Drag and Drop onto the JSON Editor.
+Step 31: Click 'Save' on the top of the console
+Step 32: Click 'Build Skill' on the top right of the console.
