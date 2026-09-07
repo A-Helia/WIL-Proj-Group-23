@@ -22,7 +22,7 @@ src/
   build_index.py          converts collection.csv -> JSONL, builds the Lucene index
   retrieval.py             LuceneSearcher BM25: topics.csv -> target/runs/bm25.txt
   eval.py                    scores a run (or compares several) against qrels.txt with ranx
-  chatbot.py                FAQ chatbot: LuceneSearcher retrieval + Claude-generated answer
+  chatbot.py                FAQ chatbot: LuceneSearcher retrieval + local Qwen-generated answer
 target/
   indexes/bm25/          the built Lucene index
   runs/                    retrieval run files
@@ -81,15 +81,3 @@ cd src
 python chatbot.py                                                  # interactive
 python chatbot.py "How much protein do I need for muscle gain?"     # one-shot
 ```
-
-## Swapping in your real gym data
-
-Replace the three `data/*.csv` files, keeping the same columns:
-
-- **`collection.csv`**: one row per FAQ passage/answer — `passage_id, passage, source`
-- **`topics.csv`**: one row per test question, grouped under a `topic_id` — `topic_id, Topic, question_id, question`
-- **`groundtruth.csv`**: which `passage_id`(s) correctly answer each `topic_id`, with `relevance_judgment` 1 (partial) or 2 (full)
-
-After replacing `collection.csv`, re-run `build_index.py` to rebuild the
-Lucene index before running `retrieval.py` or `chatbot.py`. Nothing in the
-scripts themselves needs to change.
