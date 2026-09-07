@@ -1,0 +1,27 @@
+topic_id,topic,passage_id,relevance_judgment
+W01,how much protein do I need for muscle gain,P17,2
+W01,how much protein do I need for muscle gain,P18,1
+W01,how much protein do I need for muscle gain,P19,1
+W02,how should I spread out my protein intake,P18,2
+W02,how should I spread out my protein intake,P08,1
+W03,what should I eat before a workout,P12,2
+W03,what should I eat before a workout,P07,1
+W04,what should I eat after a workout,P13,2
+W04,what should I eat after a workout,P16,1
+W05,how much water should I drink during exercise,P09,2
+W05,how much water should I drink during exercise,P14,1
+W06,how many days a week should I strength train,P05,2
+W06,how many days a week should I strength train,P20,1
+W07,how much cardio should I do each week,P04,2
+W07,how much cardio should I do each week,P23,1
+W08,what counts as strength training,P26,2
+W09,how long should I rest between sets,P21,2
+W10,do I need rest days,P28,2
+W10,do I need rest days,P06,1
+W11,what should my plate look like,P10,2
+W11,what should my plate look like,P01,1
+W12,how much sugar and saturated fat is okay,P02,2
+W13,how much sodium should I eat per day,P03,2
+W14,how do I get a gym induction,P22,2
+W15,is exercise advice different for older adults or pregnant members,P25,2
+W16,should I do stretching or balance work,P27,2

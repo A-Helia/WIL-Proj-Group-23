@@ -1,0 +1,29 @@
+passage_id,passage,source
+P01,"Most adults should aim for roughly 45-65% of daily calories from carbohydrates, 20-35% from fat, and 10-35% from protein, built around vegetables, fruit, whole grains, lean protein and dairy or alternatives.",US Dietary Guidelines 2025-2030
+P02,"Added sugars should stay under 10% of daily calories and saturated fat under 10% of daily calories, with most fat coming from unsaturated sources like oils, nuts and fish.",US Dietary Guidelines 2025-2030
+P03,"Adults are advised to keep sodium intake under 2,300mg a day, mainly by limiting processed and packaged foods rather than table salt alone.",US Dietary Guidelines 2025-2030
+P04,"Adults should get at least 150-300 minutes of moderate-intensity aerobic activity, or 75-150 minutes of vigorous activity, per week, spread across most days.",HHS Physical Activity Guidelines
+P05,"Muscle-strengthening activity that works all major muscle groups is recommended on 2 or more days per week, in addition to aerobic activity.",HHS Physical Activity Guidelines
+P06,"Some activity is better than none, and benefits start accumulating from the very first minutes of moderate-to-vigorous activity, even below the full weekly target.",HHS Physical Activity Guidelines
+P07,"For workouts longer than about an hour, a carbohydrate-containing snack 30-60 minutes beforehand helps sustain energy, and easily digestible carbs during very long sessions can help maintain performance.",Nutrition.gov Eating for Exercise
+P08,"Rather than one large protein-heavy meal, spreading protein across meals and snacks throughout the day supports muscle repair after training.",Nutrition.gov Eating for Exercise
+P09,"Drinking water before, during and after exercise helps prevent dehydration; pale yellow urine is a simple everyday indicator of adequate hydration.",Nutrition.gov Eating for Exercise
+P10,"A simple way to build a meal is to fill half the plate with vegetables and fruit, a quarter with lean protein, and a quarter with whole grains or starchy vegetables.",CDC Nutrition Guidelines
+P11,"Cutting back on highly processed, energy-dense snacks and sugary drinks is one of the most effective ways to reduce excess calorie intake without tracking every gram.",CDC Nutrition Guidelines
+P12,"A full meal 3-4 hours before training allows time for digestion, while a smaller carbohydrate-focused snack 30-60 minutes before can top up energy without causing stomach discomfort.",USADA Fueling for Performance
+P13,Consuming carbohydrate and protein within about 2 hours after training supports glycogen replenishment and muscle repair; the exact minute-by-minute window is less critical than getting this in during the day.,USADA Fueling for Performance
+P14,"For sessions over 60-90 minutes or heavy sweating, replacing sodium and other electrolytes alongside fluids helps maintain performance and prevent cramping.",USADA Fueling for Performance
+P15,"Batch-preparing simple meals built around a protein source, a carbohydrate source and vegetables makes it easier to eat consistently around a training schedule.",SHPN Dietitian Fact Sheets
+P16,"Convenient post-training snacks that pair carbs and protein include a yoghurt with fruit, a glass of milk, or a sandwich with lean protein filling.",SHPN Dietitian Fact Sheets
+P17,"For people doing regular resistance training, roughly 1.6g of protein per kilogram of bodyweight per day maximises muscle protein synthesis, with little extra benefit found above about 2.2g/kg/day.",BJSM Protein Review
+P18,Distributing protein into 3-4 meals of roughly 0.4g per kilogram of bodyweight each appears more effective for muscle growth than concentrating it into one or two large meals.,BJSM Protein Review
+P19,"Hitting total daily protein intake is a stronger driver of muscle growth than the exact timing of protein relative to a workout, though eating protein within a few hours of training is still a reasonable habit.",BJSM Protein Review
+P20,"New members are typically advised to start with 2-3 full-body strength sessions a week, focusing on major compound movements, before progressing to more specialised splits.",Gym Chain FAQ
+P21,"For general strength and muscle goals, resting 60-90 seconds between sets is a common starting point, with longer rests (2-3 minutes) for heavier, lower-rep lifting.",Gym Chain FAQ
+P22,New members can book a free induction session with a trainer to learn correct form on the main equipment before training independently.,Gym Chain FAQ
+P23,"WHO recommends adults do at least 150-300 minutes of moderate-intensity or 75-150 minutes of vigorous-intensity aerobic activity weekly, plus muscle-strengthening activity on 2+ days.",WHO Physical Activity Guidelines
+P24,"Limiting long periods of sitting and replacing sedentary time with activity of any intensity is associated with health benefits, independent of meeting the weekly activity target.",WHO Physical Activity Guidelines
+P25,"Older adults, pregnant and postpartum people, and those with chronic conditions can generally follow the same broad activity targets, adapted in intensity, with balance-focused activity recommended for older adults.",WHO Physical Activity Guidelines
+P26,"Muscle-strengthening activities include lifting weights, working with resistance bands, bodyweight exercises like push-ups and squats, and heavy gardening or carrying loads.",NHS Strength and Flexibility Guidance
+P27,"Stretching and balance exercises, such as yoga or tai chi, are encouraged alongside strength and aerobic work, particularly for older adults to help reduce fall risk.",NHS Strength and Flexibility Guidance
+P28,Allowing at least one rest or light-activity day between intense strength sessions targeting the same muscle groups helps the body recover and adapt.,NHS Strength and Flexibility Guidance

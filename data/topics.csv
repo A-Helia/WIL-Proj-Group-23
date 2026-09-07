@@ -1,0 +1,25 @@
+topic_id,Topic,question_id,question
+W01,how much protein do I need for muscle gain,W01Q01,How much protein do I need for muscle gain?
+W01,how much protein do I need for muscle gain,W01Q02,What's the ideal daily protein intake for lifting weights?
+W02,how should I spread out my protein intake,W02Q01,How should I spread my protein across meals?
+W02,how should I spread out my protein intake,W02Q02,Is it better to eat protein in one big meal or several small ones?
+W03,what should I eat before a workout,W03Q01,What's a good pre-workout meal?
+W03,what should I eat before a workout,W03Q02,When should I eat before training?
+W04,what should I eat after a workout,W04Q01,What should I eat to recover after training?
+W04,what should I eat after a workout,W04Q02,What's a good post-workout snack?
+W05,how much water should I drink during exercise,W05Q01,How much should I drink during a workout?
+W05,how much water should I drink during exercise,W05Q02,Do I need electrolytes during long training sessions?
+W06,how many days a week should I strength train,W06Q01,How often should I do strength training?
+W06,how many days a week should I strength train,W06Q02,How many days a week should a beginner lift weights?
+W07,how much cardio should I do each week,W07Q01,How many minutes of cardio do I need weekly?
+W07,how much cardio should I do each week,W07Q02,What's the weekly aerobic exercise target?
+W08,what counts as strength training,W08Q01,What exercises count as muscle-strengthening activity?
+W09,how long should I rest between sets,W09Q01,What's a good rest time between sets?
+W10,do I need rest days,W10Q01,How many rest days should I take?
+W10,do I need rest days,W10Q02,Is it okay to train the same muscles two days in a row?
+W11,what should my plate look like,W11Q01,How do I build a balanced meal?
+W12,how much sugar and saturated fat is okay,W12Q01,What's the daily limit for added sugar?
+W13,how much sodium should I eat per day,W13Q01,What's the recommended sodium limit?
+W14,how do I get a gym induction,W14Q01,How do I book a session with a trainer?
+W15,is exercise advice different for older adults or pregnant members,W15Q01,Is the exercise advice different for older adults?
+W16,should I do stretching or balance work,W16Q01,Do I need to do flexibility training?
