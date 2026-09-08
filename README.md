@@ -1,12 +1,8 @@
 # Gym FAQ RAG — pipeline
 
-Reproduces Walert's `data -> index -> retrieve -> evaluate` pipeline for a
-gym FAQ knowledge base, using the SAME retrieval engine Walert uses:
-Pyserini's `LuceneSearcher`, backed by real Anserini/Lucene BM25 — not a
-Python reimplementation. Generation uses a small local open-source model
-(`Qwen2.5-0.5B-Instruct`) instead of Walert's Falcon-7b — same idea
-(self-hosted, free, no API key), just sized to run on a normal CPU
-instead of needing a GPU.
+Reproduces Walert's `data -> index -> retrieve -> evaluate` pipeline for a gym FAQ knowledge base, using the SAME retrieval engine Walert uses:
+Pyserini's `LuceneSearcher`, backed by real Anserini/Lucene BM25. Generation uses a small local open-source model (`Qwen2.5-0.5B-Instruct`) instead of Walert's Falcon-7b — same idea
+(self-hosted, free, no API key), just sized to run on a normal CPU instead of needing a GPU.
 
 ## Layout
 
@@ -31,9 +27,7 @@ requirements.txt
 
 ## Setup
 
-Requires a JVM (Java 11+) for Anserini/Lucene — install a JDK if you don't
-already have one (`apt install openjdk-21-jdk` on Ubuntu/Debian, or the
-equivalent for your OS).
+Requires a JVM (Java 11+) for Anserini/Lucene : install a JDK (`pacman -S openjdk-21-jdk` on CachyOS/Arch, or equivalent for other OS).
 
 ```bash
 pip install -r requirements.txt
@@ -43,15 +37,11 @@ pip install -r requirements.txt
 Set export OPENAI_API_KEZY=unsued
 ```
 
-No API key needed anywhere in this pipeline. `chatbot.py` downloads its
+No API key needed anywhere in this pipeline. 
 
-model (`Qwen2.5-0.5B-Instruct`, ~1GB) from Hugging Face on first run —
-that needs internet but no account or key — and runs fully offline after
-that, on CPU.
+`chatbot.py` downloads its free model (`Qwen2.5-0.5B-Instruct`, ~1GB) from Hugging Face on first run which requires internet access and  it runs fully offline in CPU.
 
-`pyserini` pulls in `torch` and `transformers` even though this pipeline
-only uses its sparse (BM25) side — that's how the package is structured
-upstream, not something this project adds on top.
+`pyserini` pulls in `torch` and `transformers` even though this pipeline only uses its sparse (BM25) side becasuse of how the package is structured and  not something this project adds on top.
 
 ## Run the pipeline
 
@@ -69,10 +59,7 @@ Sample output on the placeholder data:
 gymrag.bm25: {'ndcg@1': 0.521, 'ndcg@3': 0.543, 'ndcg@5': 0.601}
 ```
 
-Re-run `build_index.py` any time `collection.csv` changes. To compare
-retrieval strategies (e.g. BM25 vs a dense retriever), write a second run
-file in the same TREC format and pass both to `eval.py` — it switches to
-a Tukey-test comparison table automatically, same as Walert's `eval.py`.
+Re-run `build_index.py` any time `collection.csv` changes. To compare retrieval strategies (e.g. BM25 vs a dense retriever), write a second run file in the same TREC format and pass both to `eval.py` it switches to a Tukey-test comparison table automatically, same as Walert's `eval.py`.
 
 ## Run the chatbot
 
