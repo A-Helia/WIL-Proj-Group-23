@@ -11,6 +11,11 @@ import os
 import subprocess
 import pandas as pd
 
+# Same Pyserini import-time quirk as in retrieval.py/chatbot.py — set a
+# harmless dummy value so the subprocess below never hits the missing
+# OPENAI_API_KEY crash, even if a future pyserini version touches it here.
+os.environ.setdefault("OPENAI_API_KEY", "unused")
+
 DATA_DIR = "../data"
 COLLECTION = f"{DATA_DIR}/collection.csv"
 JSONL_DIR = f"{DATA_DIR}/collection_jsonl"
