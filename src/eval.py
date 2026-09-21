@@ -60,7 +60,10 @@ def main():
     print(f"--- {args.topic_set} topics ({qrels_df['q_id'].nunique()} questions) ---")
     if len(runs) == 1:
         scores = evaluate(qrels=qrels, run=runs[0], metrics=metrics, make_comparable=True)
-        print(f"{runs[0].name or args.runs[0]}: {scores}")
+        # Clean up numpy datatypes for beautiful terminal printing:
+        clean_scores = {k: round(float(v), 4) for k, v in scores.items()}
+        print(f"{runs[0].name or args.runs[0]}: {clean_scores}")
+
     else:
         report = compare(
             qrels=qrels,

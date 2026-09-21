@@ -23,6 +23,7 @@ NUM_HITS = 20
 def main():
     topics = pd.read_csv(TOPICS)
     searcher = LuceneSearcher(INDEX_DIR)
+    searcher.set_bm25(k1=0.8, b=0.4) # update for exact matching for short documents
 
     with open(OUTPUT_PATH, "w") as f:
         for question_id, question in topics[["question_id", "question"]].values:

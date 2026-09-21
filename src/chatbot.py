@@ -59,6 +59,9 @@ class FaqChatbot:
         # the Lucene index (built by build_index.py) is what's searched.
         self.collection = pd.read_csv(collection_path).set_index("passage_id")
         self.searcher = LuceneSearcher(index_dir)
+        self.collection = pd.read_csv(collection_path).set_index("passage_id")
+        self.searcher = LuceneSearcher(index_dir)
+        self.searcher.set_bm25(k1=0.8, b=0.4) 
         print(f"Loading local model '{model_name}' (first run downloads it, ~1GB)...")
         self.generator = pipeline("text-generation", model=model_name, device_map="cpu")
 

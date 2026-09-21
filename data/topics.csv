@@ -23,3 +23,14 @@ W13,how much sodium should I eat per day,W13Q01,What's the recommended sodium li
 W14,how do I get a gym induction,W14Q01,How do I book a session with a trainer?
 W15,is exercise advice different for older adults or pregnant members,W15Q01,Is the exercise advice different for older adults?
 W16,should I do stretching or balance work,W16Q01,Do I need to do flexibility training?
+W17,can I do HIIT instead of normal cardio,W17Q01,Is high intensity interval training a good alternative to steady cardio?
+W17,can I do HIIT instead of normal cardio,W17Q02,Can I do HIIT to meet my weekly aerobic exercise goals?
+W18,what are the training guidelines for seniors and pregnancy,W18Q01,What are the fitness recommendations for older adults to prevent falls?
+W18,what are the training guidelines for seniors and pregnancy,W18Q02,How much exercise should a pregnant or postpartum woman get?
+W19,how do I stretch safely without hurting my joints,W19Q01,Should I do static stretching before or after a gym workout?
+W19,how do I stretch safely without hurting my joints,W19Q02,How long should I hold a stretch to improve flexibility?
+W20,does sleep affect muscle growth and performance,W20Q01,How does a lack of sleep impact muscle recovery and hormones?
+W21,how do I avoid overhydrating or cramping,W21Q01,What is hyponatremia and how do I prevent it during long workouts?
+W22,does caffeine improve workout performance,W22Q01,How much caffeine should I take before a strength training session?
+W23,should I take creatine or pre sleep protein,W23Q01,Is creatine monohydrate safe and effective for building explosive strength?
+W23,should I take creatine or pre sleep protein,W23Q02,What are the benefits of drinking a casein protein shake before bed?
