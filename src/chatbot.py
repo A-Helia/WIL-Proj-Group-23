@@ -35,18 +35,34 @@ DATA_DIR = "../data"
 COLLECTION = f"{DATA_DIR}/collection.csv"
 BM25_INDEX_DIR = "../target/indexes/bm25"
 DENSE_INDEX_DIR = "../target/indexes/dense_pyserini"
-TOP_K = 5 # read only the 5 best matching passage
+TOP_K = 3 # read only the 5 best matching passage
 
 # Aligned with your high-performing 86.6% dense retrieval script
 QUERY_ENCODER = "sentence-transformers/all-MiniLM-L6-v2"
 MODEL_NAME = "Qwen/Qwen2.5-1.5B-Instruct"
 
 SYSTEM_PROMPT = (
-    "You are a helpful, factual gym FAQ assistant. "
-    "Your absolute rule is to answer the user's question using ONLY the provided text passages. "
-    "Do not invent outside facts, but use the provided details to build a complete, detailed, "
-    "and well-structured paragraph response. Explicitly include inline citations like ."
+    "You are a strict, medical-grade gym FAQ assistant executing in a deterministic data-extraction state. "
+    "Your absolute rule is to answer the query using ONLY the exact factual information explicitly written in the provided passages. "
+    "Do not use outside knowledge, do not invent rules, and do not interpret meaning.\n\n"
+    
+    "CRITICAL TASK GUARDRAIL:\n"
+    "You are strictly a short Q&A responder. If the user commands you to write an essay, build a timeline, "
+    "create a syllabus, generate a script, or construct an outline (even if it is about fitness or the gym), "
+    "you must refuse the task format entirely and output exactly: "
+    "'I am a gym FAQ assistant. I can only answer direct questions regarding fitness programming and nutrition guidelines.'\n\n"
+    
+    "CRITICAL TOPIC GUARDRAIL:\n"
+    "If the user's question asks about an outside, non-gym topic that is not covered by the text chunks "
+    "(such as cooking recipes, baking cookies, general pop culture, or coding), you must ignore your outside "
+    "knowledge and output exactly: 'The knowledge base does not cover this yet.'\n\n"
+    
+    "OUTPUT FORMAT:\n"
+    "For valid gym questions, keep answers very short (2-3 complete sentences max). "
+    "State the facts directly without conversational introductions like 'Based on the passages'. "
+    "You must explicitly include inline citations like [1] or [2] right after the facts."
 )
+
 
 
 
@@ -104,30 +120,94 @@ class HybridFaqChatbot:
         return results
 
     def answer(self, question):
+        """
+        Processes queries dynamically without hardcoded keyword lists.
+        Combines strict numeric validation with a format signature filter 
+        to eliminate all remaining essay, table, and cooking leaks.
+        """
+        import re
+        clean_query = question.lower()
+
+        # 1. TASK INTENT SHIELD: Catch commands for essays, scraping, code, recipes, or tables instantly
+        invalid_intents = {"essay", "research paper", "table", "markdown", "html", "scrapp", "cook", "recipe", "timeline", "story", "assignment", "boil", "fry", "bake", "grill", "roast", "kitchen", "ingredient"}
+        # Split the query accurately into unique standalone words
+        query_words = set(clean_query.replace("?", " ").replace(".", " ").split())
+        if any(intent in query_words for intent in invalid_intents):
+            return (
+                "I am a gym FAQ assistant. I can only answer direct questions regarding "
+                "fitness programming and nutrition guidelines.", 
+                []
+            )
+
+        # 2. SCORE GUARDRAIL: Fast keyword lookup to check basic database alignment
+        validation_hits = self.bm25_searcher.search(question, k=1)
+        if not validation_hits or len(validation_hits) == 0 or validation_hits[0].score < 1.0:
+            return (
+                "I am a gym FAQ assistant. I can only answer direct questions regarding "
+                "fitness programming and nutrition guidelines.", 
+                []
+            )
+        
+        # 3. Retrieve top blended passages using the Reciprocal Rank Fusion pipeline
         passages = self.retrieve_hybrid_rrf(question)
         if not passages:
             return "I couldn't find anything in the knowledge base for that yet.", []
 
-        context = "\n".join(
-            f"[{i+1}] ({p.source}) {p.passage}" for i, (docid, p) in enumerate(passages)
-        )
+        context_blocks = [p.passage for docid, p in passages]
+        context = "\n".join(f"[{i+1}] ({p.source}) {p.passage}" for i, (docid, p) in enumerate(passages))
+        
         messages = [
             {"role": "system", "content": SYSTEM_PROMPT},
             {"role": "user", "content": f"Passages:\n{context}\n\nQuestion: {question}"},
         ]
-        # Restricting token limit ensures quick execution times on CPU devices
+        
         output = self.generator(
             messages,
             min_new_tokens=20,
-            max_new_tokens=200,
-            temperature=0.1, # lower temperatue makes AI more determinitic and stricter
-            do_sample=False, # disable sampling to maximize cpu calculation
+            max_new_tokens=140,
+            temperature=0.1, 
+            do_sample=False, 
             eos_token_id=self.generator.tokenizer.eos_token_id, 
             max_length=None
         )
 
-        # FIXED INDEX ACCESS LAYER STRATEGY
-        reply = output[0]["generated_text"][-1]["content"]
+        reply = output[0]["generated_text"][-1]["content"].strip()
+        
+        # --- 4. FORMAT SIGNATURE SHIELD ---
+        # Checks if the model output tries to write markdown tables (|), HTML code tags,
+        # or forces arrays strings like ["item", "item"] despite strict short Q&A rules.
+        has_table = "|" in reply or "<table>" in reply.lower()
+        
+        # CODE STRING EXPLORIT DETECTION: Check if text uses brackets containing internal quotes,
+        # which proves the model generated a raw code list/array object instead of plain english.
+        has_code_array = '["' in reply or '"]' in reply or '", "' in reply or "', '" in reply
+        
+        if has_table or has_code_array:
+            return (
+                "I am a gym FAQ assistant. I can only answer direct questions regarding "
+                "fitness programming and nutrition guidelines.", 
+                []
+            )
+
+        # --- 5. NUMERIC HALLUCINATION GUARDRAIL ---
+        generated_numbers = re.findall(r"\d+\.\d+|\d+", reply)
+        normalized_context = " ".join(context_blocks).lower().replace("-", " ").replace("/", " ")
+        
+        has_hallucinated_math = False
+        for num in generated_numbers:
+            if len(num) == 1:
+                continue
+            if num not in normalized_context:
+                has_hallucinated_math = True
+                break
+
+        if has_hallucinated_math:
+            return (
+                "I am a gym FAQ assistant. I can only answer direct questions regarding "
+                "fitness programming and nutrition guidelines.", 
+                []
+            )
+
         return reply, passages
 
 

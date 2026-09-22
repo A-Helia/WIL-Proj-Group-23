@@ -77,3 +77,4 @@ if user_query := st.chat_input("Ask a question (e.g., Why do my knees crack when
             "content": answer, 
             "evidence": evidence
         })
+    
