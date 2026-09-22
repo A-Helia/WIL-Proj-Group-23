@@ -39,13 +39,13 @@ TOP_K = 5 # read only the 5 best matching passage
 
 # Aligned with your high-performing 86.6% dense retrieval script
 QUERY_ENCODER = "sentence-transformers/all-MiniLM-L6-v2"
-MODEL_NAME = "Qwen/Qwen2.5-0.5B-Instruct"
+MODEL_NAME = "Qwen/Qwen2.5-1.5B-Instruct"
 
 SYSTEM_PROMPT = (
-    "You are a short, direct FAQ bot. Answer the question using ONLY the provided facts. "
-    "Do not use markdown headers, do not use bullet points, and do not say 'Based on the text'. "
-    "Write exactly one sentence answering how much protein is needed, and exactly one sentence "
-    "answering how to split it. End your sentences with inline citations like [1]."
+    "You are a helpful, factual gym FAQ assistant. "
+    "Your absolute rule is to answer the user's question using ONLY the provided text passages. "
+    "Do not invent outside facts, but use the provided details to build a complete, detailed, "
+    "and well-structured paragraph response. Explicitly include inline citations like ."
 )
 
 
