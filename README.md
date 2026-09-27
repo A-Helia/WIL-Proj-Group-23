@@ -88,14 +88,3 @@ cd src
 python chatbot.py                                                  # interactive
 python chatbot.py "How much protein do I need for muscle gain?"     # one-shot
 ```
-
-## Swapping in the real gym data
-
-Replace these files, keep the same columns names
-
-- **`collection.csv`**: one row per FAQ passage/answer — `passage_id, passage, source`
-- **`topics.csv`**: one row per test question, grouped under a `topic_id` — `topic_id, Topic, question_id, question`
-- **`groundtruth.csv`**: which `passage_id`(s) correctly answer each `topic_id`, with `relevance_judgment` 1 (partial) or 2 (full)
-- **`topic_groups.csv`**: which `topic_id`s are `known` (one relevant passage) vs `inferred` (multiple) — recompute this from your new `groundtruth.csv` once you have real data
-
-After replacing `collection.csv`, re-run `build_index.py` to rebuild the Lucene index before running `retrieval.py` or `chatbot.py`.
