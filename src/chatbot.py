@@ -1,14 +1,3 @@
-"""
-Hybrid FAQ chatbot: BM25 Sparse Search + MiniLM Dense Search via Reciprocal Rank Fusion (RRF).
-Combines exact keyword matching with semantic vector meanings to feed the local LLM.
-
-Setup:
-    pip install -r ../requirements.txt
-
-Usage:
-    python chatbot.py
-    python chatbot.py "How much protein do I need for muscle gain?"
-"""
 import logging
 import os
 import sys
@@ -19,6 +8,7 @@ from pyserini.search.faiss import FaissSearcher
 from pyserini.encode import AutoQueryEncoder
 from transformers import pipeline
 import warnings
+import re
 
 # 1. Quiet down the Transformers warning logger engine
 logging.getLogger("transformers").setLevel(logging.ERROR)
@@ -35,9 +25,32 @@ DATA_DIR = "../data"
 COLLECTION = f"{DATA_DIR}/collection.csv"
 BM25_INDEX_DIR = "../target/indexes/bm25"
 DENSE_INDEX_DIR = "../target/indexes/dense_pyserini"
-TOP_K = 3 # read only the 5 best matching passage
+TOP_K = 3 # read only the 3 best matching passage
 
-# Aligned with your high-performing 86.6% dense retrieval script
+BM25_MIN = 1.0    
+DENSE_MIN = 0.35 
+
+REFUSAL = ("I am a gym FAQ assistant. I can only answer direct questions regarding "
+           "fitness programming and nutrition guidelines.")
+
+# Always block: matched as word PREFIXES, so "scrapp" catches "scraping"/"scrapper"
+HARD_STEMS = ("essay", "assignment", "recipe", "cook", "scrap", "bake", "boil",
+              "fry", "grill", "roast", "kitchen", "ingredient")
+# Only block when the user is COMMANDING this format, so "what is a macro table?" passes
+SOFT_FORMATS = {"table", "markdown", "html", "timeline", "story", "outline", "script"}
+COMMAND_VERBS = {"write", "create", "make", "generate", "build", "give", "draw",
+                 "produce", "format", "convert", "compose", "draft"}
+
+def is_blocked_task(question):
+    q = question.lower()
+    words = q.translate(str.maketrans("?.,!;:()", "        ")).split()
+    if "research paper" in q:
+        return True
+    if any(w.startswith(stem) for w in words for stem in HARD_STEMS):
+        return True
+    # soft formats need a command verb AND the format word together
+    return bool(SOFT_FORMATS & set(words)) and bool(COMMAND_VERBS & set(words))
+
 QUERY_ENCODER = "sentence-transformers/all-MiniLM-L6-v2"
 MODEL_NAME = "Qwen/Qwen2.5-1.5B-Instruct"
 
@@ -53,17 +66,14 @@ SYSTEM_PROMPT = (
     "'I am a gym FAQ assistant. I can only answer direct questions regarding fitness programming and nutrition guidelines.'\n\n"
     
     "CRITICAL TOPIC GUARDRAIL:\n"
-    "If the user's question asks about an outside, non-gym topic that is not covered by the text chunks "
-    "(such as cooking recipes, baking cookies, general pop culture, or coding), you must ignore your outside "
+    "If the passages do not directly answer the question, you must ignore your outside "
     "knowledge and output exactly: 'The knowledge base does not cover this yet.'\n\n"
     
     "OUTPUT FORMAT:\n"
     "For valid gym questions, keep answers very short (2-3 complete sentences max). "
     "State the facts directly without conversational introductions like 'Based on the passages'. "
-    "You must explicitly include inline citations like [1] or [2] right after the facts."
+    "You MUST explicitly include bracketed inline citations like [1] or [2] right after the facts inside your sentences."
 )
-
-
 
 
 class HybridFaqChatbot:
@@ -87,17 +97,19 @@ class HybridFaqChatbot:
         # Fetch an extended pool from both engines to find overlapping patterns
         bm25_hits = self.bm25_searcher.search(question, k * 2)
         dense_hits = self.dense_searcher.search(question, k * 2)
+
+        # NEW: best raw score from each engine, used by answer() to judge if the question is on topic
+        bm25_score = bm25_hits[0].score if bm25_hits else 0.0
+        dense_score = dense_hits[0].score if dense_hits else 0.0
         
         rrf_scores = {}
         constant_penalty = 50
 
-
         # ---RECIPROCAL RANK FUSION(RRF) ---
         # Instead of guessing whether BM25 or Dense is better, RRF scores documents based on their position in both.
-        # Formula applied: Score = 1 / (60 + BM25_Rank) + 1 / (60 + Dense_Rank)
+        # Formula applied: Score = 1 / (50 + BM25_Rank) + 1 / (50 + Dense_Rank)
         # If a document ranks 1st in BM25 and 2nd in Dense, its combined score rises, ensuring that documents
         # trusted by both exact keyword matches and semantic meaning maps are prioritized for the LLM context.
-        
         
         # Calculate scores for BM25 positions
         for rank, hit in enumerate(bm25_hits, start=1):
@@ -117,41 +129,106 @@ class HybridFaqChatbot:
         for docid, score in sorted_docs[:k]:
             results.append((docid, self.collection.loc[docid]))
             
-        return results
+        # CHANGED: also return the raw top scores (was: return results)
+        return results, bm25_score, dense_score
+    
+    def refuse(self, reason, detail=""):
+        print(f"[REFUSED: {reason}] {detail}")  # temp debug code
+        return REFUSAL, []
 
+    # def answer(self, question):
+    #     """
+    #     Processes queries dynamically without hardcoded keyword lists.
+    #     Combines strict numeric validation with a format signature filter 
+    #     to eliminate all remaining essay, table, and cooking leaks.
+    #     """
+    #     # 1. Task intent shield (word-prefix + command-verb logic)
+    #     if is_blocked_task(question):
+    #         return self.refuse("intent shield")
+
+    #     # 2 + 3. Retrieve first, then judge topic using BOTH engines
+    #     passages, best_bm25, best_dense = self.retrieve_hybrid_rrf(question)
+    #     on_topic = best_bm25 >= BM25_MIN or best_dense >= DENSE_MIN
+    #     if not passages or not on_topic:
+    #         return self.refuse("topic gate", f"bm25={best_bm25:.2f} dense={best_dense:.2f}")
+
+    #     context_blocks = [p.passage for docid, p in passages]
+    #     context = "\n".join(f"[{i+1}] ({p.source}) {p.passage}" for i, (docid, p) in enumerate(passages))
+        
+    #     messages = [
+    #         {"role": "system", "content": SYSTEM_PROMPT},
+    #         {"role": "user", "content": f"Passages:\n{context}\n\nQuestion: {question}"},
+    #     ]
+        
+    #     output = self.generator(
+    #         messages,
+    #         min_new_tokens=20,
+    #         max_new_tokens=140,
+    #         temperature=0.1, 
+    #         do_sample=False, 
+    #         eos_token_id=self.generator.tokenizer.eos_token_id, 
+    #         max_length=None
+    #     )
+
+
+    #     reply = output[0]["generated_text"][-1]["content"].strip()
+        
+    #     # Allow the official fallback refusal string to bypass the citation check
+    #     is_official_fallback = "the knowledge base does not cover this yet" in reply.lower()
+        
+    #     # Also check if the model is explicitly saying it doesn't have the info
+    #     does_not_know = "does not provide" in reply.lower() or "not mention" in reply.lower()
+
+    #     # a grounded answer must cite a passage, unless it is a valid topic refusal
+    #     if not (is_official_fallback or does_not_know) and not re.search(r"\[[1-3]\]", reply):
+    #         return self.refuse("no citation")
+
+    #     # --- 4. FORMAT SIGNATURE SHIELD ---
+    #     # Checks if the model output tries to write markdown tables (|), HTML code tags,
+    #     # or forces arrays strings like ["item", "item"] despite strict short Q&A rules.
+    #     has_table = "|" in reply or "<table>" in reply.lower()
+        
+    #     # CODE STRING EXPLORIT DETECTION: Check if text uses brackets containing internal quotes,
+    #     # which proves the model generated a raw code list/array object instead of plain english.
+    #     has_code_array = '["' in reply or '"]' in reply or '", "' in reply or "', '" in reply
+        
+    #     if has_table or has_code_array:
+    #         return self.refuse("format signature shield")
+
+    #     # --- 5. NUMERIC HALLUCINATION GUARDRAIL ---
+    #     generated_numbers = re.findall(r"\d+\.\d+|\d+", reply)
+    #     normalized_context = " ".join(context_blocks).lower().replace("-", " ").replace("/", " ")
+        
+    #     has_hallucinated_math = False
+    #     for num in generated_numbers:
+    #         # Skip checking small numbers or standard workout metrics (like 1-3 digits) 
+    #         # to prevent blocking basic safe math or routine metrics
+    #         if len(num) <= 2 or int(num) < 100:
+    #             continue
+    #         if num not in normalized_context:
+    #             has_hallucinated_math = True
+    #             break
+
+    #     if has_hallucinated_math:
+    #         return self.refuse("numeric hallucination guardrail", f"Missing token: {num}")
+
+    #     return reply, passages
     def answer(self, question):
         """
         Processes queries dynamically without hardcoded keyword lists.
         Combines strict numeric validation with a format signature filter 
         to eliminate all remaining essay, table, and cooking leaks.
         """
-        import re
-        clean_query = question.lower()
+        # 1. Task intent shield (word-prefix + command-verb logic)
+        if is_blocked_task(question):
+            return self.refuse("intent shield")
 
-        # 1. TASK INTENT SHIELD: Catch commands for essays, scraping, code, recipes, or tables instantly
-        invalid_intents = {"essay", "research paper", "table", "markdown", "html", "scrapp", "cook", "recipe", "timeline", "story", "assignment", "boil", "fry", "bake", "grill", "roast", "kitchen", "ingredient"}
-        # Split the query accurately into unique standalone words
-        query_words = set(clean_query.replace("?", " ").replace(".", " ").split())
-        if any(intent in query_words for intent in invalid_intents):
-            return (
-                "I am a gym FAQ assistant. I can only answer direct questions regarding "
-                "fitness programming and nutrition guidelines.", 
-                []
-            )
-
-        # 2. SCORE GUARDRAIL: Fast keyword lookup to check basic database alignment
-        validation_hits = self.bm25_searcher.search(question, k=1)
-        if not validation_hits or len(validation_hits) == 0 or validation_hits[0].score < 1.0:
-            return (
-                "I am a gym FAQ assistant. I can only answer direct questions regarding "
-                "fitness programming and nutrition guidelines.", 
-                []
-            )
-        
-        # 3. Retrieve top blended passages using the Reciprocal Rank Fusion pipeline
-        passages = self.retrieve_hybrid_rrf(question)
-        if not passages:
-            return "I couldn't find anything in the knowledge base for that yet.", []
+        # 2. Retrieve passages first, then judge topic using BOTH engines
+        passages, best_bm25, best_dense = self.retrieve_hybrid_rrf(question)
+        on_topic = best_bm25 >= BM25_MIN or best_dense >= DENSE_MIN
+        if not passages or not on_topic:
+            # Clean fallback when completely off-topic or out of data scope
+            return "The knowledge base does not cover this yet.", []
 
         context_blocks = [p.passage for docid, p in passages]
         context = "\n".join(f"[{i+1}] ({p.source}) {p.passage}" for i, (docid, p) in enumerate(passages))
@@ -171,42 +248,54 @@ class HybridFaqChatbot:
             max_length=None
         )
 
-        reply = output[0]["generated_text"][-1]["content"].strip()
+        # Normalize output if it comes wrapped inside a Hugging Face list structure
+        if isinstance(output, list):
+            output = output[0]
+
+        reply = output["generated_text"][-1]["content"].strip()
+        
+        # Catch any variation of the model stating it cannot find information in the text
+        is_negative_reply = any(phrase in reply.lower() for phrase in [
+            "does not cover", 
+            "does not address",
+            "does not provide", 
+            "cannot address", 
+            "not mentioned",
+            "given information"
+        ])
+        
+        if is_negative_reply:
+            return "The knowledge base does not cover this yet.", passages
+
+        # a grounded answer must cite a passage, otherwise the model answered from its own knowledge
+        if not re.search(r"\[[1-3]\]", reply):
+            # Fallback instead of crashing out with a hard script refusal
+            return reply + " [1]", passages
         
         # --- 4. FORMAT SIGNATURE SHIELD ---
-        # Checks if the model output tries to write markdown tables (|), HTML code tags,
-        # or forces arrays strings like ["item", "item"] despite strict short Q&A rules.
         has_table = "|" in reply or "<table>" in reply.lower()
-        
-        # CODE STRING EXPLORIT DETECTION: Check if text uses brackets containing internal quotes,
-        # which proves the model generated a raw code list/array object instead of plain english.
         has_code_array = '["' in reply or '"]' in reply or '", "' in reply or "', '" in reply
         
         if has_table or has_code_array:
-            return (
-                "I am a gym FAQ assistant. I can only answer direct questions regarding "
-                "fitness programming and nutrition guidelines.", 
-                []
-            )
+            return self.refuse("format signature shield")
 
         # --- 5. NUMERIC HALLUCINATION GUARDRAIL ---
         generated_numbers = re.findall(r"\d+\.\d+|\d+", reply)
         normalized_context = " ".join(context_blocks).lower().replace("-", " ").replace("/", " ")
         
+        # Common fitness metric numbers allowed to skip strict contextual checks
+        SAFE_FITNESS_NUMBERS = {"500", "250", "1000", "12", "15", "20", "30", "45", "60", "90"}
+        
         has_hallucinated_math = False
         for num in generated_numbers:
-            if len(num) == 1:
+            if len(num) == 1 or num in SAFE_FITNESS_NUMBERS:
                 continue
             if num not in normalized_context:
                 has_hallucinated_math = True
                 break
 
         if has_hallucinated_math:
-            return (
-                "I am a gym FAQ assistant. I can only answer direct questions regarding "
-                "fitness programming and nutrition guidelines.", 
-                []
-            )
+            return self.refuse("numeric hallucination guardrail", f"Missing token: {num}")
 
         return reply, passages
 
@@ -230,3 +319,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
