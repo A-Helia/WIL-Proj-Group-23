@@ -21,6 +21,7 @@ src/
   retrieval.py           LuceneSearcher BM25: topics.csv -> target/runs/bm25.txt
   eval.py                scores a run (or compares several) against qrels.txt with ranx with the known/infered split
   chatbot.py             FAQ chatbot: LuceneSearcher retrieval + local Qwen-generated answer
+  custom_eval.py         scores a run against the custom defined evaluation metrices
 target/
   indexes/bm25/          the built Lucene index
   runs/                  retrieval run files
@@ -63,33 +64,48 @@ python retrieval.py                                          # target/runs/bm25.
 python eval.py all ../data/qrels.txt ../target/runs/bm25.txt
 python eval.py known ../data/qrels.txt ../target/runs/bm25.txt
 python eval.py inferred ../data/qrels.txt ../target/runs/bm25.txt
+
+# Cuustom Evaluation
+python custom_eval.py ../data/qrels.txt ../target/runs/bm25.txt ../target/runs/dense.txt
 ```
 
-Output on the placeholder data:
+Output of custom evaluation:
 
 ```
---- all topics (24 questions) ---
-gymrag.bm25: {'ndcg@1': 0.521, 'ndcg@3': 0.543, 'ndcg@5': 0.601}
---- known topics (7 questions) ---
-gymrag.bm25: {'ndcg@1': 0.714, 'ndcg@3': 0.804, 'ndcg@5': 0.804}
---- inferred topics (17 questions) ---
-gymrag.bm25: {'ndcg@1': 0.441, 'ndcg@3': 0.435, 'ndcg@5': 0.517}
-```
+==============================================================================================================
+                          CUSTOM RETRIEVAL ALGORITHM PERFORMANCE REPORT                     
+==============================================================================================================
+| Model / Run File       | Direct FAQ Top-1 Acc | Mean Reciprocal Rank | Hit Rate @ 5 | Precision @ 5 |
+| ---------------------- | -------------------- | -------------------- | ------------ | ------------- |
+| bm25.txt               |               63.64% |               85.36% |       94.59% |        31.35% |
+| dense.txt              |               72.73% |               88.74% |       94.59% |        32.43% |
+==============================================================================================================
 
-Known scores are noticeably higher than inferred which follwos same pattern Walert's paper reports (single-passage questions are easier for retrieval than ones requiring combining multiple passages).
+METRIC DEFINITIONS & SYSTEMS EXPLANATIONS:
+------------------------------------------
+1. Direct FAQ Top-1 Accuracy:
+   - Calculates how often the single best-matching answer lands exactly at Rank 1 for direct queries.
+
+2. Mean Reciprocal Rank (MRR):
+   - Evaluates where the *very first* correct document appears. It heavily penalizes drops down the list.
+
+3. Hit Rate @ 5 (Context Completeness):
+   - The percentage of times a correct answer managed to sneak into the top 5 prompt slots, ignoring order.
+
+4. Precision @ 5 (Noise Meter):
+   - Measures the ratio of useful vs useless text blocks in the prompt. Low values mean CPU bloating noise.
+==============================================================================================================
+```
 
 Re-run `build_index.py` any time `collection.csv` changes.
 
-`eval.py` also supports comparing multiple retrieval runs side by side (a Tukey-test comparison table, same as Walert's `eval.py`)
-
-## Run the chatbot
+Run the chatbot
 
 ```bash
 cd src
 python chatbot.py                                                  # interactive
 python chatbot.py "How much protein do I need for muscle gain?"     # one-shot
 ```
-
 
 ## Run the chatbot web ui
 
