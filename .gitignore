@@ -1,4 +1,10 @@
-venv/
+target/
 __pycache__/
-*.pyc
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+env/
 .env
+SOURCE.md
