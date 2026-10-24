@@ -1,0 +1,107 @@
+question,actual,expected
+What sets apart CS programs from SE programs?,Transfer,Comparison_CS_SE
+Can I enroll in a double degree program that includes Business?,Double_Degree_Business,Double_Degree_Business
+Can I do a double degree with Business?,Double_Degree_Business,Double_Degree_Business
+Are there opportunities to pursue double degrees in CS?,Double_Degree_CS,Double_Degree_CS
+What there double degrees available in CS?,Double_Degree_CS,Double_Degree_CS
+Is the Software Engineering degree at RMIT recognized and accredited by Engineers Australia?,Accred_SE,Accred_SE
+Are program transfers relatively straightforward?,AMAZON.FallbackIntent,Transfer
+Can the Associate degree be considered a suitable pathway if I don't meet the required ATAR for the IT degree?,ATAR_Insufficient,ATAR_Insufficient
+Can you get a job in games industry here?,Job_Opportunities_GamesIndustry,Job_Opportunities_GamesIndustry
+"Can you outline the dissimilarities between the two CS degrees, traditional and Professional?",Comparison_Bachelors_Associate,Comparison_BCS_BCSProf
+Is it possible to take elective courses that are not listed within the program?,AMAZON.FallbackIntent,AMAZON.FallbackIntent
+Does pursuing a CS degree offer better job prospects compared to an IT degree?,ATAR_Insufficient,AMAZON.FallbackIntent
+What are the avlible minors cources for CS that doesnot need an approval,AMAZON.FallbackIntent,AMAZON.FallbackIntent
+How do CS and SE programs differ from each other?,BTS,Comparison_CS_SE
+Are there any options for combining CS with another discipline for a double degree?,Double_Degree_Business,Double_Degree_CS
+Can RMIT's Software Engineering degree be considered accredited by Engineers Australia?,Accred_SE,Accred_SE
+Can I expect these programs to be accredited by the Australian Computer Society?,Accred_ACS,Accred_ACS
+Does the school offer work placements?,Work_Placement,Work_Placement
+"Are RMIT degrees Bachelor of Science (BSc) degrees or Bachelor of Engineering (BEng) degrees, or what?",Degree_Type,AMAZON.FallbackIntent
+Is it possible to gain admission to the CS program even if I didn't study Math Methods in Year 12?,AMAZON.FallbackIntent,Math_Req
+Is it a smooth process to switch between programs?,Transfer,Transfer
+"Can you provide details about the available capstone projects, placements, and industry training for RMIT CS students?",WIL,WIL
+Will my credits from an associate degree be automatically recognized when I pursue a bachelor's degree?,Associate_Bachelor_Transfer,Associate_Bachelor_Transfer
+Is the Associate degree a viable alternative if I fall short of the required ATAR for the IT degree?,ATAR_Insufficient,ATAR_Insufficient
+What sets the Bachelor of CS and Bachelor of CS (Professional) degrees apart from each other?,Comparison_BCS_BCSProf,Comparison_BCS_BCSProf
+What does the final year of CS program include?,AMAZON.FallbackIntent,AMAZON.FallbackIntent
+What are the programming languages that will be covered in the CS program,AMAZON.FallbackIntent,AMAZON.FallbackIntent
+Can you explain the variances between CS and SE programs?,Transfer,Comparison_CS_SE
+Can I easily change my program of study if desired?,AMAZON.FallbackIntent,Transfer
+Is it accurate to say that the IT industry in Australia has no future as every company outsources to India?,IT_Future_Australia,IT_Future_Australia
+"Can you elaborate on the job prospects and career options for individuals holding degrees in CS, SE, IT, DS, or similar disciplines?",AMAZON.FallbackIntent,Job_Opportunities
+Can one find employment opportunities in the game development industry in this region?,Job_Opportunities_GamesIndustry,Job_Opportunities_GamesIndustry
+What‚Äôs the difference between CS and IT programs?,Comparison_CS_IT,Comparison_CS_IT
+How long is Bachelor of CS?,AMAZON.FallbackIntent,AMAZON.FallbackIntent
+"what is ""programming boot camp""?",AMAZON.FallbackIntent,AMAZON.FallbackIntent
+"If I am an international student, What is the language level required to study CS",AMAZON.FallbackIntent,AMAZON.FallbackIntent
+What are the majors required for Data Science,AMAZON.FallbackIntent,AMAZON.FallbackIntent
+what's the difference between CS and SE programs?,AMAZON.FallbackIntent,Comparison_CS_SE
+What options are there for Work Integrated Learning experiences for RMIT CS students?,WIL,WIL
+Is the transition from an associate degree to a bachelor's degree seamless?,Associate_Bachelor_Transfer,Associate_Bachelor_Transfer
+Are the assertions true that there is no future for the IT industry in Australia because most companies have outsourced to India?,IT_Future_Australia,IT_Future_Australia
+"What kind of jobs, careers available to CS graduates? SE, IT, DS, or whatever degree?",Job_Opportunities,Job_Opportunities
+What sets apart CS programs from IT programs?,Comparison_CS_IT,Comparison_CS_IT
+Do CS students need to enrol on industry placement?,AMAZON.FallbackIntent,AMAZON.FallbackIntent
+What math requirements are needed for the CS program?,AMAZON.FallbackIntent,AMAZON.FallbackIntent
+"In the aspect of job opportunities, is opting for a CS degree superior to selecting an IT degree?",ATAR_Insufficient,AMAZON.FallbackIntent
+what are the majors avalible for CS without a prerequisite,AMAZON.FallbackIntent,AMAZON.FallbackIntent
+Can you describe the range of electives that are on offer?,Electives,Electives
+Is RMIT‚Äôs Software Engineering degree accredited by Engineers Australia?,Accred_SE,Accred_SE
+Are the programs endorsed by the Australian Computer Society?,Accred_ACS,Accred_ACS
+Can I expect the school to facilitate work placements?,Work_Placement,Work_Placement
+Are the internships paid positions?,Internship_Paid,Internship_Paid
+"Are RMIT degrees categorized as Bachelor of Science (BSc) degrees or Bachelor of Engineering (BEng) degrees, or some other designation?",Degree_Type,AMAZON.FallbackIntent
+Can I pursue the CS program without having studied Math Methods in Year 12?,AMAZON.FallbackIntent,Math_Req
+Will my progress from the first year in the IT program be acknowledged when I transition to the CS program?,Summary,IT_CS_Transfer_Cred
+"If I do not get the required ATAR to get into IT degree, is the Associate degree a suitable pathway?",ATAR_Insufficient,ATAR_Insufficient
+"What types of employment and career possibilities await graduates with degrees in CS, SE, IT, DS, or other relevant fields?",AMAZON.FallbackIntent,Job_Opportunities
+What are the disparities between the Bachelor of CS and Bachelor of CS (Professional) degrees?,Comparison_BCS_BCSProf,Comparison_BCS_BCSProf
+What‚Äôs the difference between Bachelor of CS and Bachelor of CS (Professional) degrees?,Comparison_BCS_BCSProf,Comparison_BCS_BCSProf
+What are the extra courses I need to take if I transfer from IT to CS?,AMAZON.FallbackIntent,AMAZON.FallbackIntent
+How many weeks should we work in the industry placements?,AMAZON.FallbackIntent,AMAZON.FallbackIntent
+Are there any scholarships for CS bachelor's degree,Double_Degree_CS,AMAZON.FallbackIntent
+Is doing an CS degree a better option than an IT degree in terms of job opportunities?,ATAR_Insufficient,AMAZON.FallbackIntent
+What options do I have for selecting elective courses?,AMAZON.FallbackIntent,Electives
+Can I expect to receive payment for the internships?,Internship_Paid,Internship_Paid
+"Can you clarify whether RMIT degrees are classified as Bachelor of Science (BSc) degrees or Bachelor of Engineering (BEng) degrees, or another category?",Degree_Type,AMAZON.FallbackIntent
+Will I receive full credit for my first year in the IT program if I transfer to the CS program?,IT_CS_Transfer_Cred,IT_CS_Transfer_Cred
+Can I transfer between programs easily?,Transfer,Transfer
+"What level of Work Integrated Learning (call it capstone project, placement, industry training, or whatever they call it) available to RMIT CS students?",WIL,WIL
+Is the transfer from associate degree to bachelors automatic?,Associate_Bachelor_Transfer,Associate_Bachelor_Transfer
+Is the Associate degree a recommended option if I don't meet the ATAR requirements for the IT degree?,ATAR_Insufficient,ATAR_Insufficient
+Can you explain the variances between CS and IT programs?,Comparison_CS_IT,Comparison_CS_IT
+What can I do if I don't get work placements as SE student?,AMAZON.FallbackIntent,AMAZON.FallbackIntent
+What math requirements are needed for the IT program?,Summary,AMAZON.FallbackIntent
+Are there more favorable job prospects associated with a CS degree as opposed to an IT degree?,ATAR_Insufficient,AMAZON.FallbackIntent
+what are the majors avalible for IT without a prerequisite,AMAZON.FallbackIntent,AMAZON.FallbackIntent
+Can you provide details on the available choices of electives?,Electives,Electives
+Will the school provide work placements?,Work_Placement,Work_Placement
+Are the internships remunerated?,Internship_Paid,Internship_Paid
+Are there any alternative pathways to enter the CS program if I haven't taken Math Methods in Year 12,ATAR_Insufficient,Math_Req
+"If I were to be transferred from IT to CS, will I get full credit for my first year in IT?",IT_CS_Transfer_Cred,IT_CS_Transfer_Cred
+"What forms of Work Integrated Learning, such as capstone projects or industry placements, are accessible for RMIT CS students?",WIL,WIL
+"I have heard rumors that the IT industry in Australia is being outsourced to India, resulting in a lack of future prospects. Is this information correct?",IT_Future_Australia,IT_Future_Australia
+Is it feasible to obtain a job within the game development industry here?,AMAZON.FallbackIntent,Job_Opportunities_GamesIndustry
+What is the capstone project?,AMAZON.FallbackIntent,AMAZON.FallbackIntent
+when does the application for program transfer open,AMAZON.FallbackIntent,AMAZON.FallbackIntent
+What choice of electives available?,Electives,Electives
+Is it possible to undertake a double degree with Business?,Double_Degree_Business,Double_Degree_Business
+Are there any opportunities for a double degree program involving Business?,Double_Degree_Business,Double_Degree_Business
+Can students opt for double degrees in the CS field?,AMAZON.FallbackIntent,Double_Degree_CS
+Does Engineers Australia accredit RMIT's Software Engineering degree?,Accred_SE,Accred_SE
+Are these programs recognized by the Australian Computer Society?,Accred_ACS,Accred_ACS
+Are these programs accredited by Australian Computer Society?,Accred_ACS,Accred_ACS
+Will there be opportunities for work placements provided by the school?,Work_Placement,Work_Placement
+Are the internships paid?,Internship_Paid,Internship_Paid
+"How are RMIT degrees labeled? Are they referred to as Bachelor of Science (BSc) degrees or Bachelor of Engineering (BEng) degrees, or something else?",Degree_Type,AMAZON.FallbackIntent
+I didn‚Äôt do Math Methods in Year 12. Can I get into CS program somehow?,Math_Req,Math_Req
+Can I expect my first year in the IT program to be recognized and credited when I switch to the CS program?,Summary,IT_CS_Transfer_Cred
+Can I expect an automatic transfer of credits from an associate degree to a bachelor's degree?,Associate_Bachelor_Transfer,Associate_Bachelor_Transfer
+"I heard that there is no future in IT industry in Australia, as every IT company has outsourced to India?",IT_Future_Australia,IT_Future_Australia
+"What employment opportunities and career paths are open to graduates with degrees in CS, SE, IT, DS, or related fields?",Job_Opportunities,Job_Opportunities
+Are there potential career opportunities in the game development sector in this area?,Job_Opportunities_GamesIndustry,Job_Opportunities_GamesIndustry
+How do CS and IT programs differ from each other?,Comparison_CS_IT,Comparison_CS_IT
+What are the job demands for different programs?,Job_Opportunities,AMAZON.FallbackIntent
+What are the minimum requirements for an Associate degree student to successfully transfer to a bachelor's degree,Associate_Bachelor_Transfer,AMAZON.FallbackIntent
+Will RMIT help the student to build a professional network in the CS,AMAZON.FallbackIntent,AMAZON.FallbackIntent

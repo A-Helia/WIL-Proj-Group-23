@@ -1,0 +1,7 @@
+question_set,method,ndcg_at_1,ndcg_at_3,ndcg_at_5
+known,intent-based,0.6429,0.3017,0.2180
+known,bm25-rag,0.5119,0.4912,0.4733
+known,dense-rag-faiss,0.6905,0.6119,0.5812
+inferred,intent-based,0.0833,0.0391,0.0391
+inferred,bm25-rag,0.1667,0.2566,0.3291
+inferred,dense-rag-faiss,0.2500,0.2380,0.2380

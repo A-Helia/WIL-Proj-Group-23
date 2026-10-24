@@ -1,0 +1,476 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "intents": [
+        {
+          "slots": [],
+          "name": "Electives",
+          "samples": [
+            "What choice of electives available",
+            "What range of electives is offered",
+            "What variety of electives can students choose from",
+            "What selection of electives does the school provide",
+            "Are there a variety of electives available for students to choose from",
+            "What electives are available to students"
+          ]
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": [
+            "that is all i needed thank you",
+            "nothing else thank you",
+            "bye",
+            "bubye",
+            "goodbye",
+            "that will be all for today thank you"
+          ]
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": [
+            "I\u0027m feeling lost for questions",
+            "I have no idea what to ask",
+            "I\u0027m confused about what to ask you",
+            "I\u0027m unsure of what questions to pose to you",
+            "I\u0027m in a state of confusion not knowing what to ask you",
+            "support",
+            "help",
+            "i do not know what to ask you",
+            "what are you capable of",
+            "what are your capabilities",
+            "how can you help me",
+            "what kind of questions will you answer",
+            "what can you do for me",
+            "what can you help me with",
+            "hey i dont know what to ask"
+          ]
+        },
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        },
+        {
+          "slots": [],
+          "name": "Double_Degree_Business",
+          "samples": [
+            "Can I do a double degree with Business",
+            "Can I pursue a dual degree program in business",
+            "Is it possible for me to enrol in a business-related double degree program",
+            "Am I eligible for a business-specific double degree program",
+            "Can I add a business-focused major to my current degree program",
+            "Can I switch to a business-related major from my current program"
+          ]
+        },
+        {
+          "slots": [],
+          "name": "Double_Degree_CS",
+          "samples": [
+            "What there double degrees available in CS",
+            "Are there any postgraduate courses in computer science",
+            "Are there various specializations in computer science",
+            "Are there numerous levels of education in computer science",
+            "Are there distinct programs in computer science",
+            "Are there diverse types of computer science degrees"
+          ]
+        },
+        {
+          "slots": [],
+          "name": "Work_Placement",
+          "samples": [
+            "Will the school provide work placements",
+            "Will the institution offer job placements",
+            "Is there an opportunity for job placement at this school",
+            "Are there any placements available for students at this school",
+            "Will the school provide job opportunities for students",
+            "Are there any placement opportunities available for students at this school"
+          ]
+        },
+        {
+          "slots": [],
+          "name": "Math_Req",
+          "samples": [
+            "I didnt do Math Methods in Year twelve. Can I get into CS program somehow"
+          ]
+        },
+        {
+          "slots": [],
+          "name": "IT_CS_Transfer_Cred",
+          "samples": [
+            "If I were to be transferred from IT to CS will I get full credit for my first year in IT",
+            "If I were to be transferred from IT to CS will I be given full credit for my first year in the latter field",
+            "Would I be granted full credit for my first year in CS if I were to be transferred from IT",
+            "How much credit would I receive for my first year in CS if I were to be transferred from IT",
+            "Will my first year in CS be counted towards my IT credit",
+            "Are there any transfer programs between IT and CS that would allow me to receive full credit for my first year in the latter field"
+          ]
+        },
+        {
+          "slots": [],
+          "name": "WIL",
+          "samples": [
+            "What level of Work Integrated Learning available to RMIT CS students",
+            "What opportunities are available for RMIT CS students to complete a capstone project",
+            "What types of industry training are offered to RMIT CS students",
+            "What level of work-integrated learning is available for RMIT CS students during their studies",
+            "What experiences can RMIT CS students gain through their industry placement",
+            "Are there any specific programs or courses offered at RMIT CS to develop students\u0027 work-integrated learning skills"
+          ]
+        },
+        {
+          "slots": [],
+          "name": "Associate_Bachelor_Transfer",
+          "samples": [
+            "Is the transfer from associate degree to bachelors automatic",
+            "Can an associate degree be transferred directly to a bachelor\u0027s degree program",
+            "Does transferring from an associate degree program to a bachelor\u0027s degree program require reapplication",
+            "Is transferring from an associate degree program to a bachelor\u0027s degree program a common occurrence",
+            "Are there any specific requirements or guidelines for transferring from an associate degree program to a bachelor\u0027s degree program",
+            "Is there a process or timeline for transferring from an associate degree program to a bachelor\u0027s degree program"
+          ]
+        },
+        {
+          "slots": [],
+          "name": "ATAR_Insufficient",
+          "samples": [
+            "If I do not get the required ATAR to get into IT degree is the Associate degree a suitable pathway",
+            "What other qualifications might I consider if I don\u0027t meet the ATAR requirement for an IT degree",
+            "Are there alternative pathways to gain access to an IT degree besides meeting the ATAR requirement",
+            "What other skills or experiences might I have to consider when deciding between an Associate degree and an IT degree",
+            "Are there any vocational or industry-specific qualifications that might be suitable for a pathway to an IT degree",
+            "What are the advantages and disadvantages of pursuing an Associate degree instead of an IT degree"
+          ]
+        },
+        {
+          "slots": [],
+          "name": "Job_Opportunities",
+          "samples": [
+            "What kind of jobs careers available to CS graduates. SE IT DS or whatever degree",
+            "What job opportunities are available for computer science graduates",
+            "What are the various career paths for computer science graduates",
+            "What are some employment options for computer science graduates",
+            "What are the diverse job prospects for computer science graduates",
+            "What are some of the various career paths in computer science"
+          ]
+        },
+        {
+          "slots": [],
+          "name": "Comparison_BCS_BCSProf",
+          "samples": [
+            "What is the difference between Bachelor of CS and Bachelor of CS Professional degrees",
+            "What is the difference between a Bachelor of Science in Computer Science degree and a Bachelor of Science in Computer Science Professional degree ",
+            "What is the difference between a Bachelor of Science degree in Computer Science and a Bachelor of Science degree in Computer Science Professional",
+            "What are the distinctions between a Bachelor of Computer Science and a Bachelor of Computer Science Professional degree",
+            "How does a Bachelor of Science in Computer Science degree differ from a Bachelor of Science in Computer Science Professional degree",
+            "What are the key differences between a Bachelor of Science in Computer Science degree and a Bachelor of Science in Computer Science Professional degree"
+          ]
+        },
+        {
+          "slots": [],
+          "name": "Comparison_CS_IT",
+          "samples": [
+            "What is the difference between CS and IT programs",
+            "What distinguishes Computer Science CS from Information Technology IT programs",
+            "How are Computer Science and Information Technology courses alike",
+            "What are the main differences between Computer Science and Information Technology programs",
+            "What do Computer Science and Information Technology courses have in common",
+            "How are Computer Science and Information Technology programs alike"
+          ]
+        },
+        {
+          "slots": [],
+          "name": "About_me",
+          "samples": [
+            "tell me about you",
+            "can you tell me a little bit about yourself",
+            "who are you",
+            "what are you",
+            "What is your name"
+          ]
+        },
+        {
+          "slots": [],
+          "name": "Comparison_CS_SE",
+          "samples": [
+            "What is the difference between CS and SE programs",
+            "How are CS and SE programs different",
+            "What are the main differences between computer science and software engineering",
+            "What are the key differences between computer science and software engineering",
+            "How are computer science and software engineering related",
+            "What are the distinctions between computer science and software engineering"
+          ]
+        },
+        {
+          "slots": [],
+          "name": "Job_Opportunities_GamesIndustry",
+          "samples": [
+            "Can you get a job in games industry here",
+            "Are there job opportunities in the games industry in this area",
+            "Is it possible to find employment in the games industry in this area",
+            "Are there openings for jobs in the games industry in this location",
+            "Are there opportunities for employment in the games industry in this area",
+            "Are there job positions available in the games industry in this vicinity"
+          ]
+        },
+        {
+          "slots": [],
+          "name": "IT_Future_Australia",
+          "samples": [
+            "I heard that there is no future in IT industry in Australia as every IT company has outsourced to India",
+            "Are Australian IT companies outsourcing to India at a significant rate",
+            "Is the future of the Australian IT industry bleak",
+            "Are Australian IT companies experiencing a decrease in demand",
+            "Is the Australian IT industry struggling to stay relevant in the face of outsourcing to India ",
+            "Are Australian IT companies seeing a decline in business as a result of outsourcing to India"
+          ]
+        },
+        {
+          "slots": [],
+          "name": "Transfer",
+          "samples": [
+            "Can I transfer between programs easily",
+            "Can I transition between programs with minimal effort",
+            "Is it straightforward to switch between programs",
+            "Is it easy to move between different software applications",
+            "Does it require minimal adjustment to switch between different programs",
+            "Are there any simple methods for moving between different programs"
+          ]
+        },
+        {
+          "slots": [],
+          "name": "Degree_Type",
+          "samples": [
+            "Are RMIT degrees Bachelor of Science degrees or Bachelor of Engineering degrees or what",
+            "Are RMIT degrees Bachelor of Science BSc degrees",
+            "What is the difference between RMIT degrees and Bachelor of Engineering degrees",
+            "What is the difference between RMIT degrees and BEng degrees",
+            "What is the difference between RMIT degrees and BSc degrees"
+          ]
+        },
+        {
+          "slots": [],
+          "name": "Internship_Paid",
+          "samples": [
+            "Are the internships paid",
+            "Do interns receive financial compensation for their work at the company",
+            "Are internships at the company paid",
+            "Is compensation provided to interns at the company",
+            "Do interns receive compensation at the company"
+          ]
+        },
+        {
+          "slots": [],
+          "name": "Accred_ACS",
+          "samples": [
+            "Are these programs accredited by Australian Computer Society",
+            "Are these programs Australian Computer Society accredited",
+            "Does Australian Computer Society approve these programs",
+            "Are these programs recognized by Australian Computer Society",
+            "Does Australian Computer Society endorse these programs",
+            "Are these programs licensed by Australian Computer Society"
+          ]
+        },
+        {
+          "slots": [],
+          "name": "Accred_SE",
+          "samples": [
+            "Is RMIT\u0027s Software Engineering degree accredited by Engineers Australia",
+            "Does RMIT\u0027s Software Engineering degree meet Engineers Australia\u0027s standards",
+            "Does RMIT\u0027s Software Engineering degree adhere to Engineers Australia\u0027s guidelines",
+            "Does RMIT\u0027s Software Engineering degree meet the requirements for registration as a software engineer with Engineers Australia",
+            "Are the curriculum and accreditation requirements for RMIT\u0027s Software Engineering degree in line with Engineers Australia\u0027s expectations",
+            "Is RMIT\u0027s Software Engineering degree recognized by the Australian government for professional registration"
+          ]
+        },
+        {
+          "name": "AMAZON.FallbackIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.RepeatIntent",
+          "samples": [
+            "what did you say",
+            "say once more",
+            "I\u0027m having trouble understanding. Could you kindly say that once more",
+            "I\u0027m finding it challenging to keep up. Can you please repeat what you just said",
+            "I\u0027m having a bit of difficulty following you. Could you repeat that please",
+            "could please say that again",
+            "pardon",
+            "say again",
+            "repeat"
+          ]
+        },
+        {
+          "slots": [],
+          "name": "Creator",
+          "samples": [
+            "I\u0027m curious who developed your amazing capabilities",
+            "By whom were you created",
+            "Which genius brought you into existence",
+            "The people who developed you must be incredibly talented. Who are they",
+            "who built you",
+            "who are your developers",
+            "who developed you",
+            "Who created you",
+            "Who made you"
+          ]
+        },
+        {
+          "slots": [],
+          "name": "CIDDA",
+          "samples": [
+            "cedar group",
+            "see the group",
+            "what is the see the group",
+            "what is the cedar group",
+            "what is the sea da group",
+            "what is the seeda group",
+            "what is CIDDA group"
+          ]
+        },
+        {
+          "slots": [],
+          "name": "BTS",
+          "samples": [
+            "How do you interpret and reply to my voice",
+            "How do you grasp and answer to my voice",
+            "How do you perceive and acknowledge my voice",
+            "How do you make sense of and reciprocate to my voice",
+            "How do you fathom and retort to my voice",
+            "How do you apprehend and acknowledge my voice",
+            "How do you process and reply to my voice",
+            "How do you comprehend and react to my voice",
+            "How do you comprehend and react to my voice",
+            "Can you give me a brief overview of your functioning",
+            "how do you understand and respond to my voice",
+            "How do you work"
+          ]
+        },
+        {
+          "slots": [],
+          "name": "Motivation",
+          "samples": [
+            "Tell me the reason why you were brought into existence",
+            "What was the motivation behind developing you",
+            "Why were you created"
+          ]
+        },
+        {
+          "slots": [],
+          "name": "AI_Enquiry",
+          "samples": [
+            "are you an A eye sister",
+            "are you an A.I. system",
+            "Walert are you an artificial intelligence system",
+            "Are you an AI"
+          ]
+        },
+        {
+          "slots": [],
+          "name": "Personality",
+          "samples": [
+            "Tell me more about your personality and style",
+            "Tell me more about your demeanor and style",
+            "Do you have a personality or a unique character Walert",
+            "What\u0027s your personality"
+          ]
+        },
+        {
+          "slots": [],
+          "name": "AutoLearn",
+          "samples": [
+            "Do you become smarter over time",
+            "Are you capable of learning from our interactions",
+            "Can you learn and improve"
+          ]
+        },
+        {
+          "slots": [],
+          "name": "Courses",
+          "samples": [
+            "programs at rmit university",
+            "school of computing technology courses",
+            "what kind of courses do you offer at RMIT"
+          ]
+        },
+        {
+          "slots": [
+            {
+              "name": "program_name",
+              "type": "programType"
+            }
+          ],
+          "name": "Summary",
+          "samples": [
+            "what is the {program_name} program",
+            "describe the {program_name} course",
+            "summary of {program_name} program",
+            "can you tell me a little bit about the {program_name} course at rmit",
+            "can you tell me a little bit about the {program_name} program at rmit"
+          ]
+        },
+        {
+          "slots": [],
+          "name": "Comparison_Bachelors_Associate",
+          "samples": [
+            "What sets Bachelor degrees apart from associate degrees",
+            "Can you explain the dissimilarities between Bachelor degrees and associate degrees",
+            "What are the distinctions between Bachelor degrees and associate degrees",
+            "What\u0027s the difference between Bachelor degrees and associate degrees"
+          ]
+        }
+      ],
+      "types": [
+        {
+          "values": [
+            {
+              "name": {
+                "synonyms": [
+                  "softwares",
+                  "software engineering",
+                  "se"
+                ],
+                "value": "se"
+              }
+            },
+            {
+              "name": {
+                "synonyms": [
+                  "IT",
+                  "information technology",
+                  "it"
+                ],
+                "value": "it"
+              }
+            },
+            {
+              "name": {
+                "synonyms": [
+                  "ds",
+                  "data analytics",
+                  "data science"
+                ],
+                "value": "ds"
+              }
+            },
+            {
+              "name": {
+                "synonyms": [
+                  "computers",
+                  "cs",
+                  "computer science"
+                ],
+                "value": "cs"
+              }
+            }
+          ],
+          "name": "programType"
+        }
+      ],
+      "invocationName": "testing bot"
+    }
+  }
+}
