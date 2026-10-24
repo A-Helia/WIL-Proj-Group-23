@@ -1,0 +1,23 @@
+Model: falcon-7b-instruct
+
+Hyper-parameters:
+    eos_token_id=tokenizer.eos_token_id,
+    do_sample=False,
+    max_new_tokens=100,
+    top_k=10,
+    top_p=0.95,
+    typical_p=0.95,
+    temperature=0.0,
+    repetition_penalty=1.03,
+
+Prompt for TOP1:
+static_prompt = "Generate an answer to be synthesized with text-to-speech for a virtual assisstant, the answer should be based on the retrieved documents for the following question. If the retrieved documents are not related to the question, then answer NA."
+prompt_base1 = static_prompt + "\nQuestion: "+row['question_content'] + "\nDocument 1: "+ row['top1_content'] + '\nAnswer: '
+
+Prompt for Top3:
+static_prompt = "Generate an answer to be synthesized with text-to-speech for a virtual assisstant, the answer should be based on 3 retrieved documents for the following question. If the retrieved documents are not related to the question, then answer NA."
+prompt_base3 = static_prompt + "\nQuestion: "+row['question_content'] + "\nDocument 1: "+ row['top3_content'][0] + "\nDocument 2: "+row['top3_content'][1]+"\nDocument 3: "+row['top3_content'][2]+'\nAnswer: '
+
+Prompt for TOP5:
+static_prompt = "Generate an answer to be synthesized with text-to-speech for a virtual assisstant, the answer should be based on 5 retrieved documents for the following question. If the retrieved documents are not related to the question, then answer NA."
+prompt_base5 = static_prompt + "\nQuestion: "+row['question_content'] + "\nDocument 1: "+ row['top5_content'][0] + "\nDocument 2: "+row['top5_content'][1]+"\nDocument 3: "+row['top5_content'][2]+"\nDocument 4: "+row['top5_content'][3]+"\nDocument 5: "+row['top5_content'][4]+'\nAnswer: '
