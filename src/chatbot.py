@@ -28,8 +28,8 @@ DENSE_INDEX_DIR = "../target/indexes/dense_pyserini"
 TOP_K = 3 # read only the 3 best matching passage
 
 # HARDENED THRESHOLDS: Elevated to block unrelated or loose semantic matches (e.g., France/Recipes)
-BM25_MIN = 2.5    
-DENSE_MIN = 0.55 
+BM25_MIN = 2.5
+DENSE_MIN = 0.55  # re-tune after rebuilding the dense index (scores are now cosine similarity)
 
 REFUSAL = ("I am a gym FAQ assistant. I can only answer direct questions regarding "
            "fitness programming and nutrition guidelines.")
@@ -126,6 +126,7 @@ class HybridFaqChatbot:
     def __init__(self, collection_path=COLLECTION, bm25_dir=BM25_INDEX_DIR, dense_dir=DENSE_INDEX_DIR, model_name=MODEL_NAME):
         print("Initializing database maps...")
         self.collection = pd.read_csv(collection_path).set_index("passage_id")
+        self.auto_cited = False  # NEW: True when we had to add a citation ourselves
         
         print("Loading BM25 sparse keyword index...")
         self.bm25_searcher = LuceneSearcher(bm25_dir)
@@ -133,7 +134,8 @@ class HybridFaqChatbot:
         
         print(f"Loading persistent MiniLM query encoder instance: {QUERY_ENCODER}...")
         # Instantiating the query encoder once at boot time to stop slow query-time reloads
-        self.encoder = AutoQueryEncoder(QUERY_ENCODER, device="cpu")
+        # CHANGED: mean pooling + normalised vectors, to match how the index is built
+        self.encoder = AutoQueryEncoder(QUERY_ENCODER, device="cpu", pooling="mean", l2_norm=True)
         self.dense_searcher = FaissSearcher(dense_dir, self.encoder)
         
         print(f"Loading local generation model '{model_name}' (runs fully offline on CPU)...")
@@ -145,7 +147,7 @@ class HybridFaqChatbot:
         bm25_hits = self.bm25_searcher.search(question, k * 2)
         dense_hits = self.dense_searcher.search(question, k * 2)
 
-        # NEW: best raw score from each engine, used by answer() to judge if the question is on topic
+        # best raw score from each engine, used by answer() to judge if the question is on topic
         bm25_score = bm25_hits[0].score if bm25_hits else 0.0
         dense_score = dense_hits[0].score if dense_hits else 0.0
         
@@ -176,7 +178,7 @@ class HybridFaqChatbot:
         for docid, score in sorted_docs[:k]:
             results.append((docid, self.collection.loc[docid]))
             
-        # CHANGED: also return the raw top scores (was: return results)
+        # also return the raw top scores
         return results, bm25_score, dense_score
     
     def refuse(self, reason, detail=""):
@@ -189,6 +191,8 @@ class HybridFaqChatbot:
         Combines strict numeric validation with a format signature filter 
         to eliminate all remaining essay, table, and cooking leaks.
         """
+        self.auto_cited = False  # NEW: reset for each question
+
         # 1. Task intent shield (word-prefix + command-verb logic)
         if is_blocked_task(question):
             return self.refuse("intent shield")
@@ -197,7 +201,7 @@ class HybridFaqChatbot:
         passages, best_bm25, best_dense = self.retrieve_hybrid_rrf(question)
         on_topic = best_bm25 >= BM25_MIN or best_dense >= DENSE_MIN
         
-        # FIX: Let your high thresholds cleanly catch off-topic queries (like France/Recipes) 
+        # Let the high thresholds cleanly catch off-topic queries (like France/Recipes)
         # without needing a fragile word-by-word loop.
         if not passages or not on_topic:
             return "The knowledge base does not cover this yet.", []
@@ -239,11 +243,9 @@ class HybridFaqChatbot:
         if is_negative_reply:
             return "The knowledge base does not cover this yet.", passages
 
-        # FIX: The broken word-by-word loop has been completely removed from here 
-        # to allow the model to speak natural English.
-
         # a grounded answer must cite a passage, otherwise the model answered from its own knowledge
         if not re.search(r"\[[1-3]\]", reply):
+            self.auto_cited = True  # NEW: model gave no citation, we add one
             return reply + " [1]", passages
         
         # --- 4. FORMAT SIGNATURE SHIELD ---

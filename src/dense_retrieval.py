@@ -3,10 +3,10 @@ Dense retrieval search script using Pyserini's native FaissSearcher.
 Requires a dense FAISS index built first with build_dense_index_pyserini.py.
 """
 import os
+os.environ.setdefault("OPENAI_API_KEY", "unused")
 import pandas as pd
 from pyserini.search.faiss import FaissSearcher
-
-os.environ.setdefault("OPENAI_API_KEY", "unused")
+from pyserini.encode import AutoQueryEncoder
 
 DATA_DIR = "../data"
 RUNS_DIR = "../target/runs"
@@ -20,9 +20,11 @@ NUM_HITS = 20
 def main():
     os.makedirs(RUNS_DIR, exist_ok=True)
     topics = pd.read_csv(TOPICS)
-    
+
     print(f"Initializing FaissSearcher with encoder: {QUERY_ENCODER}...")
-    searcher = FaissSearcher(INDEX_DIR, QUERY_ENCODER)
+    # mean pooling + normalised vectors, must match the index builder
+    encoder = AutoQueryEncoder(QUERY_ENCODER, device="cpu", pooling="mean", l2_norm=True)
+    searcher = FaissSearcher(INDEX_DIR, encoder)
 
     print(f"Running dense search for {len(topics)} questions...")
     with open(OUTPUT_PATH, "w") as f:
